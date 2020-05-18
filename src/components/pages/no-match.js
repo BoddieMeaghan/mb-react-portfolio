@@ -9,4 +9,3 @@ export default function() {
     </div>
   );
 }
-© 2020 GitHub, Inc.
