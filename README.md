@@ -1,4 +1,4 @@
-# React/Redux/Router Starter Project
+# Meaghan Boddie React Portfolio Application
 
 > Provided for the students of the [Bottega Code School](https://bottega.tech/)
 
