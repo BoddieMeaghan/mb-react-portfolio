@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
-import axios from "axios";
+import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavigationContainer from "./navigation/navigation-container";
@@ -12,7 +12,8 @@ import PortfolioDetail from "./portfolio/portfolio-detail";
 import NoMatch from "./pages/no-match";
 
 export default class App extends Component {
-  constructor() {
+  
+  constructor (){
     super();
 
     this.getPortfolioItems = this.getPortfolioItems.bind(this);
@@ -20,39 +21,40 @@ export default class App extends Component {
 
   getPortfolioItems() {
     axios
-      .get("https://meaghanboddie.devcamp.space/portfolio/portfolio_items")
-      .then(response => {
-        console.log("response data", response);
+      .get("https://boddiemeaghan.devcamp.space/portfolio/portfolio_items")
+      .then(response =>  {
+      console.log(response);
       })
-      .catch(error => {
-        console.log(error);
-      });
+  
+    .catch(error =>  {
+      console.log(error);
+    })
+  
+  render(); {
+      this.getPortfolioItems();
+      return (
+        <div className="app">
+          <Router>
+            <div>
+              <h1>Jordan Hudgens Portfolio</h1>
+              <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
+              <NavigationContainer />
+  
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/about-me" component={About} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/blog" component={Blog} />
+                <Route
+                  exact
+                  path="/portfolio/:slug"
+                  component={PortfolioDetail}
+                />
+                <Route component={NoMatch} />
+              </Switch>
+            </div>
+          </Router>
+        </div>
+      );
+    }
   }
-  render() {
-    this.getPortfolioItems();
-    return (
-      <div className="app">
-        <Router>
-          <div>
-            <h1>Meaghan's Masterpiece</h1>
-            <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
-            <NavigationContainer />
-
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/about-me" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/blog" component={Blog} />
-              <Route
-                exact
-                path="/portfolio/:slug"
-                component={PortfolioDetail}
-              />
-              <Route component={NoMatch} />
-            </Switch>
-          </div>
-        </Router>
-      </div>
-    );
-  }
-}

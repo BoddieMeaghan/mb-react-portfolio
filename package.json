@@ -1,9 +1,9 @@
 {
   "name": "Mb-react-project",
   "version": "1.0.0",
-  "description": "my description",
+  "description": "Personal portfolio app built in React",
   "scripts": {
-    "preinstall": "npm set audit false",
+    "postinstall": "cp.env.example.js env.js",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
     "heroku-postbuild": "npm run build",
