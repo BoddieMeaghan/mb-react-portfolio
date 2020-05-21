@@ -9,8 +9,12 @@ export default class PortfolioContainer extends Component {
 
     this.state = {
       pageTitle: "Welcome to my portfolio",
-      isLoading: false,
-      data: []
+      data: [
+        {title: "Quip"}
+        {title: "Eventbrite"}
+        {title: "Ministry Safe"}
+        {title: "SwingAway"}
+      ]
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -41,6 +45,12 @@ export default class PortfolioContainer extends Component {
     return this.state.data.map(item => {
       return <PortfolioItem key={item.id} item={item} />;
     });
+  }
+
+  handlePageTitleUpdate() {
+    this.setState({
+      pageTitle: "Something Else"
+    })
   }
 
   componentDidMount() {
