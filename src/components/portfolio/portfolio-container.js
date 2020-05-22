@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 import PortfolioItem from "./portfolio-item";
 
@@ -9,11 +8,16 @@ export default class PortfolioContainer extends Component {
 
     this.state = {
       pageTitle: "Welcome to my portfolio",
+      isLoading: false,
       data: [
-        {title: "Quip"}
-        {title: "Eventbrite"}
-        {title: "Ministry Safe"}
-        {title: "SwingAway"}
+        { title: "Quip", category: "eCommerce", slug: "quip" },
+        { title: "Eventbrite", category: "Scheduling", slug: "eventbrite" },
+        {
+          title: "Ministry Safe",
+          category: "Enterprise",
+          slug: "ministry-safe"
+        },
+        { title: "SwingAway", category: "eCommerce", slug: "swingaway" }
       ]
     };
 
@@ -28,39 +32,17 @@ export default class PortfolioContainer extends Component {
     });
   }
 
-  getPortfolioItems() {
-    axios
-      .get("https://jordan.devcamp.space/portfolio/portfolio_items")
-      .then(response => {
-        this.setState({
-          data: response.data.portfolio_items
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
   portfolioItems() {
     return this.state.data.map(item => {
-      return <PortfolioItem key={item.id} item={item} />;
+      return <PortfolioItem title={item.title} url={"google.com"} slug={item.slug}/>;
     });
-  }
-
-  handlePageTitleUpdate() {
-    this.setState({
-      pageTitle: "Something Else"
-    })
-  }
-
-  componentDidMount() {
-    this.getPortfolioItems();
   }
 
   render() {
     if (this.state.isLoading) {
       return <div>Loading...</div>;
     }
+
 
     return (
       <div>

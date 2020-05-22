@@ -23,7 +23,12 @@ export default class NavigationComponent extends Component {
           Blog
         </NavLink>
 
+        {/* <button>Home</button> 
+        <button>About</button>
+        <button>Contact</button>
+        <button>Blog</button>
         {false ? <button>Add Blog</button> : null}
+       */}
       </div>
     );
   }
