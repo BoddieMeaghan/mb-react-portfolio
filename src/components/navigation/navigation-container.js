@@ -8,7 +8,8 @@ export default class NavigationComponent extends Component {
 
   render() {
     return (
-      <div>
+      <div className= "nav-wrapper">
+      <div className="left-side">
         <NavLink exact to="/" activeClassName="nav-link-active">
           Home
         </NavLink>
@@ -27,8 +28,11 @@ export default class NavigationComponent extends Component {
         <button>About</button>
         <button>Contact</button>
         <button>Blog</button>
-        {false ? <button>Add Blog</button> : null}
-       */}
+      */}
+      {false ? <button>Add Blog</button> : null}
+      </div>
+
+      <div className="right-side"> MEAGHAN BODDIE</div>
       </div>
     );
   }
